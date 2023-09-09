@@ -115,14 +115,10 @@ int get_line(char *line, int lim)
 
 void push(char *lineptr[], char *p, int no)
 {
-    void shift(int i)
-    {
-        if (i > 1)
-            shift(i-1);
-        lineptr[i-1] = lineptr[i];
-    }
+    int i;
 
-    shift(no-1);
+    for (i = 0; i < no-1; i++)
+        lineptr[i] = lineptr[i+1];
     lineptr[no-1] = p;
 }
 
